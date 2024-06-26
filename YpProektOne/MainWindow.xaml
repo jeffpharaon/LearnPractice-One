@@ -1,0 +1,112 @@
+﻿<Window x:Class="YpProektOne.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YpProektOne"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TabControl x:Name="MainTabControl">
+            <!-- Главная вкладка -->
+            <TabItem Header="Главная">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Content="Оплата услуг" Width="200" Height="50" Click="PaymentServices_Click"/>
+                    <Button Content="Qiwi кошелёк" Width="200" Height="50" Click="QiwiWallet_Click"/>
+                    <Button Content="Поиск" Width="200" Height="50" Click="Search_Click"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Вкладка Оплата услуг -->
+            <TabItem Header="Оплата услуг" x:Name="PaymentServicesTab" Visibility="Collapsed">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Content="Сотовая связь" Width="200" Height="50" Click="MobileServices_Click"/>
+                    <Button Content="Денежные переводы" Width="200" Height="50"/>
+                    <Button Content="Моментальный перевод на карту" Width="200" Height="50"/>
+                    <Button Content="Услуги банков и погашение кредитов" Width="200" Height="50"/>
+                    <Button Content="Коммунальные услуги" Width="200" Height="50"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Вкладка Ввод номера телефона -->
+            <TabItem Header="Ввод номера телефона" x:Name="PhoneNumberInputTab" Visibility="Collapsed">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBox x:Name="PhoneNumberTextBox" Width="200" Text="+7"/>
+                        <UniformGrid Rows="4" Columns="3" Margin="10">
+                            <Button Content="1" Click="NumberButton_Click"/>
+                            <Button Content="2" Click="NumberButton_Click"/>
+                            <Button Content="3" Click="NumberButton_Click"/>
+                            <Button Content="4" Click="NumberButton_Click"/>
+                            <Button Content="5" Click="NumberButton_Click"/>
+                            <Button Content="6" Click="NumberButton_Click"/>
+                            <Button Content="7" Click="NumberButton_Click"/>
+                            <Button Content="8" Click="NumberButton_Click"/>
+                            <Button Content="9" Click="NumberButton_Click"/>
+                            <Button Content="*" Click="NumberButton_Click"/>
+                            <Button Content="0" Click="NumberButton_Click"/>
+                            <Button Content="#" Click="NumberButton_Click"/>
+                        </UniformGrid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="Назад" Click="BackButton_Click"/>
+                            <Button Content="Удалить" Click="DeleteButton_Click"/>
+                            <Button x:Name="NextButton" Content="Далее" Click="NextButton_Click" IsEnabled="False"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Ввод денежных средств -->
+            <TabItem Header="Ввод денежных средств" x:Name="MoneyInputTab" Visibility="Collapsed">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock x:Name="PhoneNumberTextBlock" Text="Номер телефона: "/>
+                        <TextBlock x:Name="OperatorTextBlock" Text="Оператор: "/>
+                        <TextBlock x:Name="AmountTextBlock" Text="Внесено: 0 рублей"/>
+                        <UniformGrid Rows="2" Columns="3" Margin="10">
+                            <Button Content="50 рублей" Click="AddMoneyButton_Click"/>
+                            <Button Content="100 рублей" Click="AddMoneyButton_Click"/>
+                            <Button Content="500 рублей" Click="AddMoneyButton_Click"/>
+                            <Button Content="1000 рублей" Click="AddMoneyButton_Click"/>
+                            <Button Content="2000 рублей" Click="AddMoneyButton_Click"/>
+                            <Button Content="5000 рублей" Click="AddMoneyButton_Click"/>
+                        </UniformGrid>
+                        <Button x:Name="SubmitButton" Content="Внести" Click="SubmitButton_Click" IsEnabled="False"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Поиск -->
+            <TabItem Header="Поиск" x:Name="SearchTab" Visibility="Collapsed">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBox x:Name="SearchTextBox" Width="200" Text="Поиск" TextChanged="SearchTextBox_TextChanged"/>
+                        <ListBox x:Name="ServicesListBox" Width="400" Height="300"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
